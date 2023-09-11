@@ -1,0 +1,103 @@
+@import "./bootstrap.min.css";
+@import "header.css";
+@import "auth.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+/*.dropdown-menu {*/
+/*    background-color: #0B1B35;*/
+/*}*/
+/*.dropdown-item:hover {*/
+/*    color: #0B1B35;*/
+/*}*/
+/*.dropdown-item {*/
+/*    color: white;*/
+/*}*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    background-color: #122646;
+}
+
+.main {
+    background-color: #1b1c17;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.dark {
+    background-color: #1b1c17;
+}
+
+.dark-secondary {
+    background-color: #23261B;
+}
+
+.primary {
+    background-color: #88a936
+}
+
+.secondary {
+    background-color: #8d9477
+}
+
+.white {
+    background-color: #e2e1d9
+}
+
+.blue {
+    background-color: #264c47
+}
+
+.neutral {
+    background-color: #d0d0c7;
+}
+
+.text-white {
+    color: #e2e1d9 !important;
+}
+
+.text-blue {
+    color: #bfe9e1 !important;
+}
+
+.red {
+    background-color: #410002;
+}
+
+.text-red {
+    color: #410002;
+}
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
