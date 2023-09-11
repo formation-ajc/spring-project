@@ -5,6 +5,7 @@ import com.projet.springproject.entity.Product;
 import com.projet.springproject.service.CategoryService;
 import com.projet.springproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -62,7 +63,7 @@ public class ProductController {
     public RedirectView add(
         @RequestParam("name") String name,
         @RequestParam("price") String price,
-        @RequestParam("category") String category,
+        @Param("category") String category,
         RedirectAttributes redirectAttrs
     ){
         System.out.println("oui c'est bon !");
@@ -85,8 +86,8 @@ public class ProductController {
             return new RedirectView("add", false);
         }
 
-        if (category.isEmpty()) {
-            redirectAttrs.addFlashAttribute("error", "*fields must be completed");
+        if (category == null || categories.isEmpty()) {
+            redirectAttrs.addFlashAttribute("error", "*Create a category before create a product");
             return new RedirectView("add", false);
         }
 
@@ -103,7 +104,7 @@ public class ProductController {
         @RequestParam("id") String id,
         @RequestParam("name") String name,
         @RequestParam("price") String price,
-        @RequestParam("category") String category,
+        @Param("category") String category,
         RedirectAttributes redirectAttrs
     ){
         System.out.println("oui c'est bon !");
@@ -126,8 +127,8 @@ public class ProductController {
             return new RedirectView(id, false);
         }
 
-        if (category.isEmpty()) {
-            redirectAttrs.addFlashAttribute("error", "*fields must be completed");
+        if (category == null || categories.isEmpty()) {
+            redirectAttrs.addFlashAttribute("error", "*Create a category before create a product");
             return new RedirectView(id, false);
         }
 
