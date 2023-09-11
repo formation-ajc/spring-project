@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/master.css">
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center h-100 text-white flex-column">
+
+      <div class="m-5 d-flex justify-content-center align-items-center w-100">
+        <a href="/" class="px-5 text-white"><span style="font-size: 50px" class="material-symbols-outlined">arrow_back</span></a>
+        <div class="flex-grow-1 d-flex justify-content-center align-items-center h1">Products</div>
+      </div>
+
+      <div class="d-flex justify-content-start align-items-start w-100 p-4">
+        <a href="products/add" type="button" class="btn btn-success d-flex justify-content-center align-content-center">
+          <span class="material-symbols-outlined">add</span>Add
+        </a>
+      </div>
+
+      <div class="flex-grow-1 w-100 p-4 overflow-auto">
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:if="${products.empty}">
+            <td colspan="5" class="h1 text-center p-5">No products</td>
+          </tr>
+
+          <tr th:each="product: ${products}" th:id="${product.getId()}">
+            <th scope="row"><span th:text="${product.getId()}"></span></th>
+            <td><span th:text="${product.getName()}"></span></td>
+            <td><span th:text="${product.getPrice()}"></span></td>
+            <td><span th:text="${categoryService.getById(product.getCategory_id()).get().getName()}"></span></td>
+            <td class="d-flex gap-2">
+              <button type="button" class="btn btn-info d-flex justify-content-center align-content-center">
+                <span class="material-symbols-outlined">edit</span>Modify
+              </button>
+              <button type="button" class="btn btn-danger d-flex justify-content-center align-content-center">
+                <span class="material-symbols-outlined">delete</span>Delete
+              </button>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </body>
+</html>
