@@ -1,0 +1,8 @@
+.card-button {
+    cursor: pointer;
+    background-color: rgba(40, 40, 50);
+}
+
+.card-button:hover {
+    background-color: yellow;
+}

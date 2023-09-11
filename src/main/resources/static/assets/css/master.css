@@ -1,6 +1,5 @@
 @import "./bootstrap.min.css";
-@import "header.css";
-@import "auth.css";
+@import "./home.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
@@ -20,7 +19,7 @@ html {
 
 body {
     height: 100vh;
-    background-color: #122646;
+    background-color: #1b1c17;
 }
 
 .main {
