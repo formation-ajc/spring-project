@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/master.css">
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center h-100 text-white flex-column">
+
+      <div class="m-5 d-flex justify-content-center align-items-center w-100">
+        <a href="/" class="px-5 text-white"><span style="font-size: 50px" class="material-symbols-outlined">arrow_back</span></a>
+        <div class="flex-grow-1 d-flex justify-content-center align-items-center h1">Categories</div>
+      </div>
+
+      <div class="d-flex justify-content-start align-items-start w-100 p-4">
+        <a href="categories/add" type="button" class="btn btn-success d-flex justify-content-center align-content-center">
+          <span class="material-symbols-outlined">add</span>Add
+        </a>
+      </div>
+
+      <div class="flex-grow-1 w-100 p-4 overflow-auto">
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:if="${categories.empty}">
+            <td colspan="3" class="h1 text-center p-5">No categories</td>
+          </tr>
+
+          <tr th:each="category: ${categories}" th:id="${category.getId()}">
+            <th scope="row"><span th:text="${category.getId()}"></span></th>
+            <td><span th:text="${category.getName()}"></span></td>
+            <td class="d-flex gap-2">
+              <a th:href="|/categories/${category.getId().toString()}|" class="btn btn-info d-flex justify-content-center align-content-center">
+                <span class="material-symbols-outlined">edit</span>Modify
+              </a>
+<!--              ${"/products/"+product.getId().toString()}-->
+              <form method="post" action="/categories/delete"  class="">
+                <input hidden="hidden" name="id" th:value="${category.getId()}"/>
+                <button type="submit" class="btn btn-danger d-flex justify-content-center align-content-center">
+                  <span class="material-symbols-outlined">delete</span>Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </body>
+</html>

@@ -2,6 +2,9 @@ package com.projet.springproject.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "category")
 public class Category {
@@ -13,9 +16,17 @@ public class Category {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
+    @OneToMany(mappedBy = "category_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products = new ArrayList<>();
+
     public Category() {}
 
     public Category(String name) {
+        this.name = name;
+    }
+
+    public Category(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 

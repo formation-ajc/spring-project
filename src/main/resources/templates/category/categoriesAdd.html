@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/master.css">
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center h-100 text-white flex-column">
+
+      <div class="m-5 d-flex justify-content-center align-items-center w-100">
+        <a href="/categories" class="px-5 text-white"><span style="font-size: 50px" class="material-symbols-outlined">arrow_back</span></a>
+        <div class="flex-grow-1 d-flex justify-content-center align-items-center h1">Add category</div>
+      </div>
+
+      <form method="post" action="/categories/add"  class="flex-grow-1 p-4 overflow-auto">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name*</label>
+          <input th:value="${name}" name="name" type="text" class="form-control" id="name" placeholder="Name">
+        </div>
+        <div class="text-danger mb-3">
+          <span th:text="${error}"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+    </div>
+  </body>
+</html>

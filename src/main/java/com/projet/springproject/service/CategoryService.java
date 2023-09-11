@@ -1,6 +1,7 @@
 package com.projet.springproject.service;
 
 import com.projet.springproject.entity.Category;
+import com.projet.springproject.entity.Product;
 import com.projet.springproject.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,10 @@ public class CategoryService {
 
     public Category create(Category tutorial) {
         return categoryRepository.save(tutorial);
+    }
+
+    public Category modify(Long id, Category category) {
+        return categoryRepository.save(new Category(id, category.getName()));
     }
 
     public void delete(final Long id) {
