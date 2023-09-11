@@ -16,13 +16,20 @@ public class Product {
     @Column(name = "price", nullable = false)
     private double price = 0;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne()
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category_id;
 
     public Product() {}
 
     public Product(String name, double price, Category category_id) {
+        this.name = name;
+        this.price = price;
+        this.category_id = category_id;
+    }
+
+    public Product(Long id, String name, double price, Category category_id) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.category_id = category_id;

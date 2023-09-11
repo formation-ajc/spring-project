@@ -22,8 +22,12 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public Product create(Product tutorial) {
-        return productRepository.save(tutorial);
+    public Product create(Product product) {
+        return productRepository.save(product);
+    }
+
+    public Product modify(Long id, Product product) {
+        return productRepository.save(new Product(id, product.getName(), product.getPrice(), product.getCategory_id()));
     }
 
     public void delete(final Long id) {

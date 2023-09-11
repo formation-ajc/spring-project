@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+  <link rel="stylesheet" type="text/css" href="/assets/css/master.css">
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center h-100 text-white flex-column">
+
+  <div class="m-5 d-flex justify-content-center align-items-center w-100">
+    <a href="/products" class="px-5 text-white"><span style="font-size: 50px" class="material-symbols-outlined">arrow_back</span></a>
+    <div class="flex-grow-1 d-flex justify-content-center align-items-center h1">Modify product</div>
+  </div>
+
+  <form method="post" action="/products/modify"  class="flex-grow-1 p-4 overflow-auto">
+    <input hidden="hidden" name="id" th:value="${id}"/>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name*</label>
+      <input th:value="${name}" name="name" type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price*</label>
+      <input th:value="${price}" name="price" type="number" class="form-control" id="price" placeholder="Price">
+    </div>
+    <div class="mb-3">
+
+      <label for="category" class="form-label">Category*</label>
+      <select
+        name="category"
+        class="form-select"
+        aria-label="Default select example"
+        id="category"
+      >
+        <option
+          th:each="category: ${categories}"
+          th:value="${category.getId()}"
+          th:selected="${categoryValue != null && categoryValue.toString().equals(category.getId().toString())}">
+          <span th:text="${category.getName()}"></span>
+        </option>
+      </select>
+    </div>
+    <div class="text-danger mb-3">
+      <span th:text="${error}"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Modify</button>
+  </form>
+
+</div>
+</body>
+</html>

@@ -10,8 +10,9 @@
   <body>
     <div class="d-flex justify-content-center align-items-center h-100 text-white flex-column">
 
-      <div class="h1 m-5">
-        Add product
+      <div class="m-5 d-flex justify-content-center align-items-center w-100">
+        <a href="/products" class="px-5 text-white"><span style="font-size: 50px" class="material-symbols-outlined">arrow_back</span></a>
+        <div class="flex-grow-1 d-flex justify-content-center align-items-center h1">Add product</div>
       </div>
 
       <form method="post" action="/products/add"  class="flex-grow-1 p-4 overflow-auto">
@@ -31,14 +32,13 @@
             aria-label="Default select example"
             id="category"
           >
-            <option th:selected="${categoryValue == null || categoryValue.empty}">Choose a category</option>
             <option th:each="category, iter: ${categories}" th:value="${category.getId()}" th:selected="${categoryValue != null && categoryValue.equals(category.getId().toString())}">
               <span th:text="${category.getName()}"></span>
             </option>
           </select>
         </div>
         <div class="text-danger mb-3">
-          *fields must be completed
+          <span th:text="${error}"></span>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
